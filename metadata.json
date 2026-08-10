@@ -1,0 +1,6 @@
+{
+  "name": "Toolvex — Free Online Tools for Everyday Tasks",
+  "description": "Fast, simple, and free online tools for images, PDFs, QR codes, text, and JSON. No registration required.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
