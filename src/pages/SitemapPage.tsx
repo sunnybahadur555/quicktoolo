@@ -12,7 +12,7 @@ export const SitemapPage: React.FC = () => {
     <div className="max-w-4xl mx-auto space-y-8">
       <SEOHead
         title="HTML Sitemap"
-        description="Index of all free online tools, categories, and legal pages on Toolvex."
+        description="Index of all free online tools, categories, and legal pages on QuickToolo."
         canonicalPath="/sitemap"
       />
 

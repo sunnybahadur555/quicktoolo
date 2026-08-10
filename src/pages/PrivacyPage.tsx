@@ -27,7 +27,7 @@ export const PrivacyPage: React.FC = () => {
 
         <h2 className="text-lg font-bold text-slate-900 dark:text-white pt-2">2. Information We Do Not Collect</h2>
         <p>
-          Because our application processes data entirely on your device, we do not store, copy, track, or inspect your personal files. No user account registration is required to access any feature of Toolvex.
+          Because our application processes data entirely on your device, we do not store, copy, track, or inspect your personal files. No user account registration is required to access any feature of QuickToolo.
         </p>
 
         <h2 className="text-lg font-bold text-slate-900 dark:text-white pt-2">3. Cookies & Local Storage</h2>

@@ -1,6 +1,6 @@
-# Toolvex — Free Online Tools Website
+# QuickToolo — Free Online Tools Website
 
-Toolvex is a production-ready, fast, accessible, and SEO-optimized web application providing 10 free client-side online tools with zero registration or cloud uploads.
+QuickToolo is a production-ready, fast, accessible, and SEO-optimized web application providing 10 free client-side online tools with zero registration or cloud uploads.
 
 ## Included Tools
 

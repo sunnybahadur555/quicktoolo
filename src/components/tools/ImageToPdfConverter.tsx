@@ -128,7 +128,7 @@ export const ImageToPdfConverterTool: React.FC = () => {
 
       const a = document.createElement('a');
       a.href = url;
-      a.download = `toolvex-images-${Date.now()}.pdf`;
+      a.download = `quicktoolo-images-${Date.now()}.pdf`;
       a.click();
 
       addToast('PDF Document generated and downloaded successfully!', 'success');

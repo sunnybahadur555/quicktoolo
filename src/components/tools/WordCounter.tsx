@@ -5,7 +5,7 @@ import { Copy, Trash2, Clock, AlignLeft, Sparkles, FileText } from 'lucide-react
 export const WordCounterTool: React.FC = () => {
   const { addToast } = useApp();
   const [text, setText] = useState<string>(
-    'Free Online Tools for Everyday Tasks. Toolvex provides fast, simple, and free tools for images, PDFs, QR codes, text, and JSON. No registration or credit card required.'
+    'Free Online Tools for Everyday Tasks. QuickToolo provides fast, simple, and free tools for images, PDFs, QR codes, text, and JSON. No registration or credit card required.'
   );
 
   // Statistics calculation

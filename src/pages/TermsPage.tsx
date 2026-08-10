@@ -27,7 +27,7 @@ export const TermsPage: React.FC = () => {
 
         <h2 className="text-lg font-bold text-slate-900 dark:text-white pt-2">2. Permitted Use</h2>
         <p>
-          You are granted a non-exclusive, free, revocable license to use all tools available on Toolvex for personal, educational, and commercial purposes.
+          You are granted a non-exclusive, free, revocable license to use all tools available on QuickToolo for personal, educational, and commercial purposes.
         </p>
 
         <h2 className="text-lg font-bold text-slate-900 dark:text-white pt-2">3. Prohibited Activities</h2>

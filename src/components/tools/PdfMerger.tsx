@@ -93,7 +93,7 @@ export const PdfMergerTool: React.FC = () => {
 
       const a = document.createElement('a');
       a.href = url;
-      a.download = `merged-toolvex-${Date.now()}.pdf`;
+      a.download = `merged-quicktoolo-${Date.now()}.pdf`;
       a.click();
 
       addToast('PDF files merged and downloaded successfully!', 'success');

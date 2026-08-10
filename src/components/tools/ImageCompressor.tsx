@@ -137,7 +137,7 @@ export const ImageCompressorTool: React.FC = () => {
     const content = await zip.generateAsync({ type: 'blob' });
     const a = document.createElement('a');
     a.href = URL.createObjectURL(content);
-    a.download = 'toolvex-compressed-images.zip';
+    a.download = 'quicktoolo-compressed-images.zip';
     a.click();
     addToast('Downloaded all compressed images in ZIP archive!', 'success');
   };

@@ -7,8 +7,8 @@ export const JsonFormatterTool: React.FC = () => {
   const [inputJson, setInputJson] = useState<string>(
     JSON.stringify(
       {
-        siteName: 'Toolvex',
-        url: 'https://toolvex.app',
+        siteName: 'QuickToolo',
+        url: 'https://quicktoolo.app',
         isFree: true,
         tools: ['QR Code Generator', 'Image Compressor', 'JSON Formatter', 'PDF Merger'],
         stats: { totalUsers: 100000, rating: 4.9 },
@@ -23,7 +23,7 @@ export const JsonFormatterTool: React.FC = () => {
   const [isValid, setIsValid] = useState<boolean>(true);
 
   const sampleJson = {
-    project: 'Toolvex Platform',
+    project: 'QuickToolo Platform',
     version: '1.0.0',
     features: {
       privacy: '100% Client-Side',
@@ -105,7 +105,7 @@ export const JsonFormatterTool: React.FC = () => {
     const blob = new Blob([inputJson], { type: 'application/json' });
     const a = document.createElement('a');
     a.href = URL.createObjectURL(blob);
-    a.download = 'toolvex-formatted.json';
+    a.download = 'quicktoolo-formatted.json';
     a.click();
     addToast('Downloaded JSON file!', 'success');
   };

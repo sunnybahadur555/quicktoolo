@@ -24,7 +24,7 @@ export const AboutPage: React.FC = () => {
             About {SITE_CONFIG.name}
           </h1>
           <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
-            Toolvex was created with a single objective: to build clean, ultra-fast, 100% free online tools that run completely inside the user's web browser without requiring accounts, subscriptions, or privacy trade-offs.
+            QuickToolo was created with a single objective: to build clean, ultra-fast, 100% free online tools that run completely inside the user's web browser without requiring accounts, subscriptions, or privacy trade-offs.
           </p>
         </div>
 
@@ -33,7 +33,7 @@ export const AboutPage: React.FC = () => {
             <Lock className="w-8 h-8 text-emerald-500 mb-2" />
             <h3 className="text-lg font-bold text-slate-900 dark:text-white">Zero Server Uploads</h3>
             <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-              Unlike traditional SaaS websites that process files on remote cloud servers, Toolvex uses modern WebAssembly, Canvas, and browser memory APIs. Your photos, PDFs, and text remain on your device.
+              Unlike traditional SaaS websites that process files on remote cloud servers, QuickToolo uses modern WebAssembly, Canvas, and browser memory APIs. Your photos, PDFs, and text remain on your device.
             </p>
           </div>
 

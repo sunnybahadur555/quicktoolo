@@ -222,7 +222,7 @@ export const HomePage: React.FC = () => {
       <section className="bg-slate-900 text-white rounded-2xl p-8 sm:p-12 shadow-md border border-slate-800">
         <div className="text-center max-w-2xl mx-auto mb-10">
           <span className="text-xs font-bold text-blue-400 uppercase tracking-widest block mb-2">
-            Why Choose Toolvex
+            Why Choose QuickToolo
           </span>
           <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">
             Designed for Speed, Security & Simplicity

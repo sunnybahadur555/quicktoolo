@@ -27,7 +27,7 @@ export const ContactPage: React.FC = () => {
     <div className="max-w-3xl mx-auto space-y-8">
       <SEOHead
         title="Contact Us"
-        description="Have feedback, bug reports, or tool suggestions? Contact the Toolvex team."
+        description="Have feedback, bug reports, or tool suggestions? Contact the QuickToolo team."
         canonicalPath="/contact"
       />
 
@@ -48,7 +48,7 @@ export const ContactPage: React.FC = () => {
             <CheckCircle2 className="w-12 h-12 text-emerald-600 dark:text-emerald-400 mx-auto" />
             <h3 className="text-lg font-bold text-slate-900 dark:text-white">Message Sent Successfully!</h3>
             <p className="text-xs text-slate-600 dark:text-slate-300">
-              Thank you for helping us improve Toolvex. Our team will review your message shortly.
+              Thank you for helping us improve QuickToolo. Our team will review your message shortly.
             </p>
             <button
               onClick={() => {

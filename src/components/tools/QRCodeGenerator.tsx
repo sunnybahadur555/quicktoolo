@@ -8,7 +8,7 @@ export const QRCodeGeneratorTool: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'url' | 'wifi' | 'vcard'>('url');
 
   // Input states
-  const [textInput, setTextInput] = useState('https://toolvex.app');
+  const [textInput, setTextInput] = useState('https://quicktoolo.app');
   const [wifiSsid, setWifiSsid] = useState('HomeWiFi');
   const [wifiPass, setWifiPass] = useState('Secret123');
   const [wifiType, setWifiType] = useState('WPA');
@@ -65,7 +65,7 @@ export const QRCodeGeneratorTool: React.FC = () => {
     if (!dataUrl) return;
     const a = document.createElement('a');
     a.href = dataUrl;
-    a.download = 'qrcode-toolvex.png';
+    a.download = 'qrcode-quicktoolo.png';
     a.click();
     addToast('QR Code downloaded as PNG!', 'success');
   };
@@ -83,7 +83,7 @@ export const QRCodeGeneratorTool: React.FC = () => {
   };
 
   const handleReset = () => {
-    setTextInput('https://toolvex.app');
+    setTextInput('https://quicktoolo.app');
     setFgColor('#0f172a');
     setBgColor('#ffffff');
     setQrSize(300);

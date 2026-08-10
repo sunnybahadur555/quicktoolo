@@ -100,7 +100,7 @@ export const JpgToPngConverterTool: React.FC = () => {
     const content = await zip.generateAsync({ type: 'blob' });
     const a = document.createElement('a');
     a.href = URL.createObjectURL(content);
-    a.download = 'toolvex-converted-pngs.zip';
+    a.download = 'quicktoolo-converted-pngs.zip';
     a.click();
     addToast('Downloaded ZIP of all PNG images!', 'success');
   };

@@ -27,7 +27,7 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
 
   const [theme, setThemeState] = useState<ThemeMode>(() => {
     if (typeof window !== 'undefined') {
-      const saved = (localStorage.getItem('toolvex_theme') || localStorage.getItem('toolvexa_theme') || localStorage.getItem('omnitool_theme')) as ThemeMode;
+      const saved = (localStorage.getItem('quicktoolo_theme') || localStorage.getItem('toolvex_theme') || localStorage.getItem('toolvexa_theme') || localStorage.getItem('omnitool_theme')) as ThemeMode;
       if (saved) return saved;
       if (window.matchMedia('(prefers-color-scheme: dark)').matches) return 'dark';
     }
@@ -53,7 +53,7 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
 
   const setTheme = (newTheme: ThemeMode) => {
     setThemeState(newTheme);
-    localStorage.setItem('toolvex_theme', newTheme);
+    localStorage.setItem('quicktoolo_theme', newTheme);
   };
 
   useEffect(() => {
