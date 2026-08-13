@@ -11,8 +11,8 @@ export const ImageResizerTool: React.FC = () => {
   const [origWidth, setOrigWidth] = useState(0);
   const [origHeight, setOrigHeight] = useState(0);
 
-  const [width, setWidth] = useState(800);
-  const [height, setHeight] = useState(600);
+  const [width, setWidth] = useState<number | ''>(800);
+  const [height, setHeight] = useState<number | ''>(600);
   const [lockAspectRatio, setLockAspectRatio] = useState(true);
   const [aspectRatio, setAspectRatio] = useState(1);
   const [outputFormat, setOutputFormat] = useState('image/png');
@@ -46,56 +46,112 @@ export const ImageResizerTool: React.FC = () => {
     reader.readAsDataURL(file);
   };
 
-  const handleWidthChange = (val: number) => {
-    setWidth(val);
+  const handleWidthChange = (valStr: string) => {
+    if (valStr === '') {
+      setWidth('');
+      if (lockAspectRatio) {
+        setHeight('');
+      }
+      return;
+    }
+    const parsed = parseInt(valStr, 10);
+    if (isNaN(parsed) || parsed <= 0) {
+      setWidth('');
+      if (lockAspectRatio) {
+        setHeight('');
+      }
+      return;
+    }
+    setWidth(parsed);
     if (lockAspectRatio && aspectRatio > 0) {
-      setHeight(Math.round(val / aspectRatio));
+      setHeight(Math.max(1, Math.round(parsed / aspectRatio)));
     }
   };
 
-  const handleHeightChange = (val: number) => {
-    setHeight(val);
+  const handleHeightChange = (valStr: string) => {
+    if (valStr === '') {
+      setHeight('');
+      if (lockAspectRatio) {
+        setWidth('');
+      }
+      return;
+    }
+    const parsed = parseInt(valStr, 10);
+    if (isNaN(parsed) || parsed <= 0) {
+      setHeight('');
+      if (lockAspectRatio) {
+        setWidth('');
+      }
+      return;
+    }
+    setHeight(parsed);
     if (lockAspectRatio && aspectRatio > 0) {
-      setWidth(Math.round(val * aspectRatio));
+      setWidth(Math.max(1, Math.round(parsed * aspectRatio)));
+    }
+  };
+
+  const handleWidthBlur = () => {
+    if (width === '' || width < 1) {
+      const fallbackW = 1;
+      setWidth(fallbackW);
+      if (lockAspectRatio && aspectRatio > 0) {
+        setHeight(Math.max(1, Math.round(fallbackW / aspectRatio)));
+      }
+    }
+  };
+
+  const handleHeightBlur = () => {
+    if (height === '' || height < 1) {
+      const fallbackH = 1;
+      setHeight(fallbackH);
+      if (lockAspectRatio && aspectRatio > 0) {
+        setWidth(Math.max(1, Math.round(fallbackH * aspectRatio)));
+      }
     }
   };
 
   const handlePresetPercentage = (percent: number) => {
     if (origWidth === 0) return;
-    const newW = Math.round((origWidth * percent) / 100);
-    const newH = Math.round((origHeight * percent) / 100);
+    const newW = Math.max(1, Math.round((origWidth * percent) / 100));
+    const newH = Math.max(1, Math.round((origHeight * percent) / 100));
     setWidth(newW);
     setHeight(newH);
   };
 
   useEffect(() => {
-    if (!imageSrc || width <= 0 || height <= 0) return;
+    const numW = typeof width === 'number' ? width : parseInt(String(width), 10);
+    const numH = typeof height === 'number' ? height : parseInt(String(height), 10);
+
+    if (!imageSrc || isNaN(numW) || isNaN(numH) || numW < 1 || numH < 1) return;
 
     const img = new Image();
     img.onload = () => {
       const canvas = document.createElement('canvas');
-      canvas.width = width;
-      canvas.height = height;
+      canvas.width = numW;
+      canvas.height = numH;
       const ctx = canvas.getContext('2d');
       if (!ctx) return;
 
       if (outputFormat === 'image/jpeg') {
         ctx.fillStyle = '#ffffff';
-        ctx.fillRect(0, 0, width, height);
+        ctx.fillRect(0, 0, numW, numH);
       }
 
-      ctx.drawImage(img, 0, 0, width, height);
+      ctx.drawImage(img, 0, 0, numW, numH);
       setPreviewUrl(canvas.toDataURL(outputFormat, 0.92));
     };
     img.src = imageSrc;
   }, [imageSrc, width, height, outputFormat]);
 
   const handleDownload = () => {
+    const numW = typeof width === 'number' && width >= 1 ? width : 1;
+    const numH = typeof height === 'number' && height >= 1 ? height : 1;
+
     if (!previewUrl) return;
     const a = document.createElement('a');
     a.href = previewUrl;
     const ext = outputFormat === 'image/jpeg' ? '.jpg' : outputFormat === 'image/webp' ? '.webp' : '.png';
-    a.download = `${fileName}-resized-${width}x${height}${ext}`;
+    a.download = `${fileName}-resized-${numW}x${numH}${ext}`;
     a.click();
     addToast('Resized image downloaded!', 'success');
   };
@@ -174,7 +230,13 @@ export const ImageResizerTool: React.FC = () => {
                   Target Dimensions (Pixels)
                 </label>
                 <button
-                  onClick={() => setLockAspectRatio(!lockAspectRatio)}
+                  onClick={() => {
+                    const nextLock = !lockAspectRatio;
+                    setLockAspectRatio(nextLock);
+                    if (nextLock && typeof width === 'number' && typeof height === 'number' && width > 0 && height > 0) {
+                      setAspectRatio(width / height);
+                    }
+                  }}
                   className={`flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold transition-colors ${
                     lockAspectRatio
                       ? 'bg-blue-50 dark:bg-blue-950 text-blue-600 dark:text-blue-400'
@@ -193,8 +255,11 @@ export const ImageResizerTool: React.FC = () => {
                   </label>
                   <input
                     type="number"
+                    min="1"
+                    placeholder="Width"
                     value={width}
-                    onChange={(e) => handleWidthChange(Math.max(1, Number(e.target.value)))}
+                    onChange={(e) => handleWidthChange(e.target.value)}
+                    onBlur={handleWidthBlur}
                     className="w-full p-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg font-mono text-xs text-slate-900 dark:text-white"
                   />
                 </div>
@@ -205,8 +270,11 @@ export const ImageResizerTool: React.FC = () => {
                   </label>
                   <input
                     type="number"
+                    min="1"
+                    placeholder="Height"
                     value={height}
-                    onChange={(e) => handleHeightChange(Math.max(1, Number(e.target.value)))}
+                    onChange={(e) => handleHeightChange(e.target.value)}
+                    onBlur={handleHeightBlur}
                     className="w-full p-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg font-mono text-xs text-slate-900 dark:text-white"
                   />
                 </div>
@@ -238,7 +306,7 @@ export const ImageResizerTool: React.FC = () => {
                   Resized Preview
                 </span>
                 <span className="text-xs font-semibold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950 px-2.5 py-0.5 rounded-full">
-                  {width} × {height} px
+                  {width || '—'} × {height || '—'} px
                 </span>
               </div>
 
