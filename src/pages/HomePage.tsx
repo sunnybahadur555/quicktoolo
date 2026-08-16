@@ -28,11 +28,11 @@ export const HomePage: React.FC = () => {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     name: SITE_CONFIG.name,
-    url: typeof window !== 'undefined' ? window.location.origin : SITE_CONFIG.defaultDomain,
+    url: SITE_CONFIG.defaultDomain,
     description: SITE_CONFIG.description,
     potentialAction: {
       '@type': 'SearchAction',
-      target: `${typeof window !== 'undefined' ? window.location.origin : SITE_CONFIG.defaultDomain}/all-tools?search={search_term_string}`,
+      target: `${SITE_CONFIG.defaultDomain}/all-tools?search={search_term_string}`,
       'query-input': 'required name=search_term_string',
     },
   };

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://quicktoolo.app/sitemap.xml
+Sitemap: https://quicktoolo.netlify.app/sitemap.xml

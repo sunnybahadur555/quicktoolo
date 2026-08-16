@@ -27,7 +27,14 @@ interface ToolPageProps {
 
 export const ToolPage: React.FC<ToolPageProps> = ({ toolId }) => {
   const { navigate } = useApp();
-  const tool = TOOLS.find((t) => t.id === toolId || t.slug === `/${toolId}`);
+  const tool = TOOLS.find(
+    (t) =>
+      t.id === toolId ||
+      t.slug === toolId ||
+      t.slug === `/${toolId}` ||
+      t.aliases?.includes(toolId) ||
+      t.aliases?.includes(`/${toolId}`)
+  );
 
   if (!tool) {
     return (
@@ -64,8 +71,10 @@ export const ToolPage: React.FC<ToolPageProps> = ({ toolId }) => {
         return <PdfMergerTool />;
       case 'pdf-compressor':
         return <PdfCompressorTool />;
+      case 'word-character-counter':
       case 'word-counter':
         return <WordCounterTool />;
+      case 'developer-tools':
       case 'json-formatter':
         return <JsonFormatterTool />;
       default:
@@ -73,7 +82,7 @@ export const ToolPage: React.FC<ToolPageProps> = ({ toolId }) => {
     }
   };
 
-  const domain = typeof window !== 'undefined' ? window.location.origin : SITE_CONFIG.defaultDomain;
+  const domain = SITE_CONFIG.defaultDomain;
 
   // Schema structured data
   const webAppSchema = {
@@ -81,7 +90,7 @@ export const ToolPage: React.FC<ToolPageProps> = ({ toolId }) => {
     '@type': 'WebApplication',
     name: tool.title,
     url: `${domain}${tool.slug}`,
-    description: tool.shortDesc,
+    description: tool.seoDescription || tool.shortDesc,
     applicationCategory: category ? category.name : 'UtilityApplication',
     operatingSystem: 'All',
     offers: {
@@ -117,8 +126,8 @@ export const ToolPage: React.FC<ToolPageProps> = ({ toolId }) => {
   return (
     <div className="space-y-8">
       <SEOHead
-        title={tool.title}
-        description={tool.shortDesc}
+        title={tool.seoTitle || tool.title}
+        description={tool.seoDescription || tool.shortDesc}
         canonicalPath={tool.slug}
         keywords={tool.keywords}
         type="software"
@@ -152,7 +161,7 @@ export const ToolPage: React.FC<ToolPageProps> = ({ toolId }) => {
             </div>
 
             <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white tracking-tight">
-              {tool.title}
+              {tool.h1 || tool.title}
             </h1>
 
             <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed max-w-3xl">

@@ -7,6 +7,8 @@ interface SEOHeadProps {
   keywords?: string[];
   canonicalPath?: string;
   type?: 'website' | 'article' | 'software';
+  image?: string;
+  noIndex?: boolean;
   schemaData?: object | object[];
 }
 
@@ -16,11 +18,20 @@ export function SEOHead({
   keywords,
   canonicalPath = '',
   type = 'website',
+  image,
+  noIndex = false,
   schemaData,
 }: SEOHeadProps) {
   useEffect(() => {
     // 1. Title
-    const pageTitle = title ? `${title} — ${SITE_CONFIG.name}` : SITE_CONFIG.fullName;
+    let pageTitle = SITE_CONFIG.fullName;
+    if (title) {
+      if (title.includes('Quick Toolo') || title.includes('QuickToolo')) {
+        pageTitle = title;
+      } else {
+        pageTitle = `${title} | ${SITE_CONFIG.name}`;
+      }
+    }
     document.title = pageTitle;
 
     // 2. Meta Description
@@ -33,7 +44,16 @@ export function SEOHead({
     }
     descTag.setAttribute('content', metaDesc);
 
-    // 3. Meta Keywords
+    // 3. Robots Meta Tag
+    let robotsTag = document.querySelector('meta[name="robots"]');
+    if (!robotsTag) {
+      robotsTag = document.createElement('meta');
+      robotsTag.setAttribute('name', 'robots');
+      document.head.appendChild(robotsTag);
+    }
+    robotsTag.setAttribute('content', noIndex ? 'noindex, nofollow' : 'index, follow');
+
+    // 4. Meta Keywords
     if (keywords && keywords.length > 0) {
       let keywordsTag = document.querySelector('meta[name="keywords"]');
       if (!keywordsTag) {
@@ -44,9 +64,10 @@ export function SEOHead({
       keywordsTag.setAttribute('content', keywords.join(', '));
     }
 
-    // 4. Canonical Link
-    const currentOrigin = typeof window !== 'undefined' ? window.location.origin : SITE_CONFIG.defaultDomain;
-    const fullCanonicalUrl = `${currentOrigin}${canonicalPath}`;
+    // 5. Canonical Link
+    const baseDomain = SITE_CONFIG.defaultDomain;
+    const cleanPath = canonicalPath.startsWith('/') ? canonicalPath : `/${canonicalPath}`;
+    const fullCanonicalUrl = canonicalPath === '/' ? `${baseDomain}/` : `${baseDomain}${cleanPath}`;
     
     let canonicalTag = document.querySelector('link[rel="canonical"]');
     if (!canonicalTag) {
@@ -56,16 +77,20 @@ export function SEOHead({
     }
     canonicalTag.setAttribute('href', fullCanonicalUrl);
 
-    // 5. Open Graph Meta Tags
+    // 6. Open Graph & Twitter Meta Tags
+    const previewImage = image || `${baseDomain}/vite.svg`;
+
     const ogTags: Record<string, string> = {
       'og:title': pageTitle,
       'og:description': metaDesc,
       'og:url': fullCanonicalUrl,
       'og:type': type === 'software' ? 'website' : type,
       'og:site_name': SITE_CONFIG.name,
+      'og:image': previewImage,
       'twitter:card': 'summary_large_image',
       'twitter:title': pageTitle,
       'twitter:description': metaDesc,
+      'twitter:image': previewImage,
     };
 
     Object.entries(ogTags).forEach(([property, content]) => {
@@ -85,7 +110,7 @@ export function SEOHead({
       el.setAttribute('content', content);
     });
 
-    // 6. Structured Data (JSON-LD)
+    // 7. Structured Data (JSON-LD)
     const existingSchemaScript = document.getElementById('json-ld-schema');
     if (existingSchemaScript) {
       existingSchemaScript.remove();
@@ -98,7 +123,7 @@ export function SEOHead({
       script.text = JSON.stringify(schemaData);
       document.head.appendChild(script);
     }
-  }, [title, description, keywords, canonicalPath, type, schemaData]);
+  }, [title, description, keywords, canonicalPath, type, image, noIndex, schemaData]);
 
   return null;
 }

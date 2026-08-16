@@ -23,7 +23,11 @@ export interface FAQItem {
 export interface Tool {
   id: string;
   title: string;
+  h1?: string;
+  seoTitle?: string;
+  seoDescription?: string;
   slug: string; // e.g. /qr-code-generator
+  aliases?: string[];
   category: CategoryId;
   shortDesc: string;
   longDesc: string;

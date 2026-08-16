@@ -9,7 +9,7 @@ export const NotFoundPage: React.FC = () => {
 
   return (
     <div className="py-16 text-center max-w-xl mx-auto space-y-6">
-      <SEOHead title="404 — Page Not Found" description="The requested page could not be found." />
+      <SEOHead title="404 — Page Not Found" description="The requested page could not be found." noIndex={true} />
 
       <div className="w-20 h-20 rounded-2xl bg-blue-50 dark:bg-slate-800 text-blue-600 dark:text-blue-400 flex items-center justify-center mx-auto text-3xl font-extrabold shadow-inner">
         404

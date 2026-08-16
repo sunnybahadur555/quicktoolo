@@ -55,9 +55,13 @@ const RouterContent: React.FC = () => {
       return <SitemapPage />;
     }
 
-    // Match individual tool slugs
+    // Match individual tool slugs & aliases
     const matchedTool = TOOLS.find(
-      (t) => t.slug === currentPath || t.id === currentPath.replace('/', '')
+      (t) =>
+        t.slug === currentPath ||
+        t.id === currentPath.replace('/', '') ||
+        t.aliases?.includes(currentPath) ||
+        t.aliases?.includes(currentPath.replace('/', ''))
     );
     if (matchedTool) {
       return <ToolPage toolId={matchedTool.id} />;

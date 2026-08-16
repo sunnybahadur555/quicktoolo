@@ -1,116 +1,116 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://quicktoolo.app/</loc>
-    <lastmod>2026-08-10</lastmod>
+    <loc>https://quicktoolo.netlify.app/</loc>
+    <lastmod>2026-08-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://quicktoolo.app/qr-code-generator</loc>
-    <lastmod>2026-08-10</lastmod>
+    <loc>https://quicktoolo.netlify.app/qr-code-generator</loc>
+    <lastmod>2026-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://quicktoolo.app/image-compressor</loc>
-    <lastmod>2026-08-10</lastmod>
+    <loc>https://quicktoolo.netlify.app/image-compressor</loc>
+    <lastmod>2026-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://quicktoolo.app/image-resizer</loc>
-    <lastmod>2026-08-10</lastmod>
+    <loc>https://quicktoolo.netlify.app/image-resizer</loc>
+    <lastmod>2026-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://quicktoolo.app/jpg-to-png</loc>
-    <lastmod>2026-08-10</lastmod>
+    <loc>https://quicktoolo.netlify.app/image-to-pdf</loc>
+    <lastmod>2026-08-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://quicktoolo.netlify.app/pdf-merger</loc>
+    <lastmod>2026-08-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://quicktoolo.netlify.app/word-character-counter</loc>
+    <lastmod>2026-08-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://quicktoolo.netlify.app/jpg-to-png</loc>
+    <lastmod>2026-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://quicktoolo.app/png-to-jpg</loc>
-    <lastmod>2026-08-10</lastmod>
+    <loc>https://quicktoolo.netlify.app/png-to-jpg</loc>
+    <lastmod>2026-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://quicktoolo.app/image-to-pdf</loc>
-    <lastmod>2026-08-10</lastmod>
+    <loc>https://quicktoolo.netlify.app/pdf-compressor</loc>
+    <lastmod>2026-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://quicktoolo.app/pdf-merger</loc>
-    <lastmod>2026-08-10</lastmod>
+    <loc>https://quicktoolo.netlify.app/developer-tools</loc>
+    <lastmod>2026-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://quicktoolo.app/pdf-compressor</loc>
-    <lastmod>2026-08-10</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://quicktoolo.app/word-counter</loc>
-    <lastmod>2026-08-10</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://quicktoolo.app/json-formatter</loc>
-    <lastmod>2026-08-10</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://quicktoolo.app/all-tools</loc>
-    <lastmod>2026-08-10</lastmod>
+    <loc>https://quicktoolo.netlify.app/all-tools</loc>
+    <lastmod>2026-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://quicktoolo.app/categories</loc>
-    <lastmod>2026-08-10</lastmod>
+    <loc>https://quicktoolo.netlify.app/categories</loc>
+    <lastmod>2026-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://quicktoolo.app/about</loc>
-    <lastmod>2026-08-10</lastmod>
+    <loc>https://quicktoolo.netlify.app/about</loc>
+    <lastmod>2026-08-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://quicktoolo.app/contact</loc>
-    <lastmod>2026-08-10</lastmod>
+    <loc>https://quicktoolo.netlify.app/contact</loc>
+    <lastmod>2026-08-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://quicktoolo.app/privacy-policy</loc>
-    <lastmod>2026-08-10</lastmod>
+    <loc>https://quicktoolo.netlify.app/privacy-policy</loc>
+    <lastmod>2026-08-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
-    <loc>https://quicktoolo.app/terms-of-service</loc>
-    <lastmod>2026-08-10</lastmod>
+    <loc>https://quicktoolo.netlify.app/terms-of-service</loc>
+    <lastmod>2026-08-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
-    <loc>https://quicktoolo.app/disclaimer</loc>
-    <lastmod>2026-08-10</lastmod>
+    <loc>https://quicktoolo.netlify.app/disclaimer</loc>
+    <lastmod>2026-08-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
-    <loc>https://quicktoolo.app/sitemap</loc>
-    <lastmod>2026-08-10</lastmod>
+    <loc>https://quicktoolo.netlify.app/sitemap</loc>
+    <lastmod>2026-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
